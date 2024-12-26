@@ -1,19 +1,200 @@
-/**index.wxss**/
+/* 整体页面的通用样式，奠定页面基础风格，可根据实际情况微调 */
+page {
+  background-color: #fdf0e1; /* 米白色背景，营造温馨柔和的整体氛围 */
+  font-family: Arial, sans-serif; /* 设置常用的无衬线字体族，确保良好的可读性 */
+  font-size: 28rpx; /* 统一设置基础字体大小，方便后续元素根据此进行适配 */
+  color: #333; /* 主体文本颜色设为深灰色，与背景形成适度对比 */
+}
+
+/* 用户信息相关样式 */
 .userinfo {
   display: flex;
   flex-direction: column;
   align-items: center;
-  color: #aaa;
+  color: #999; /* 稍浅一点的灰色，用于区分用户信息区域文本与主体文本 */
+  margin-top: 20rpx; /* 与顶部留出一定间距，使布局更舒展 */
 }
 
+/* 顶部固定样式，作为页面的重要视觉引导元素 */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100rpx; /* 适当增加高度，使其在视觉上更显稳重 */
+  background-color: #ff7f50; /* 采用活力橙色作为顶部栏背景色，吸引注意力，突出重要性 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4rpx 8rpx rgba(0, 0, 0, 0.2); /* 增强阴影效果，增加层次感 */
+  z-index: 1000; /* 确保始终在页面最顶端显示 */
+  transition: all 0.3s ease; /* 添加过渡效果，让高度变化等操作更平滑（若有相关交互需求） */
+}
+
+/* 项目名样式，在顶部栏中突出显示项目名称 */
+.projectbox {
+  color: #fff; /* 白色字体，与顶部栏背景色形成鲜明对比 */
+  font-size: 36rpx; /* 适当增大字体大小，增强视觉焦点效果 */
+  font-weight: bold; /* 加粗字体，凸显重要性 */
+  letter-spacing: 2rpx; /* 增加字间距，让文字更具呼吸感，提升美观度 */
+}
+
+/* 用户头像样式，通常用于展示用户个性化形象 */
 .userinfo-avatar {
   overflow: hidden;
   width: 128rpx;
   height: 128rpx;
   margin: 20rpx;
-  border-radius: 50%;
+  border-radius: 50%; /* 圆形头像，符合常见设计风格 */
+  box-shadow: 0 2rpx 5rpx rgba(0, 0, 0, 0.2); /* 为头像添加轻微阴影，使其更立体 */
+  transition: transform 0.3s ease; /* 添加缩放交互的过渡效果（若有相关交互需求） */
+}
+.userinfo-avatar:hover {
+  transform: scale(1.1); /* 鼠标悬停时头像放大，增强交互性和趣味性 */
 }
 
-.usermotto {
-  margin-top: 200px;
+/* 输入区域样式，用于用户输入操作 */
+.inputArea {
+  width: 80%; /* 保持与其他主要元素宽度占比的协调统一 */
+  font-size: 30rpx;
+  text-align: center;
+  height: 80rpx;
+  border-bottom: 2rpx dotted #ccc; /* 采用浅灰色虚线边框，弱化边框的视觉强度 */
+  margin: 0 auto; /* 在父容器中水平居中 */
+  margin-top: 120rpx; /* 与顶部留出合适间距，避免过于拥挤 */
+  padding: 0 20rpx; /* 左右添加少量内边距，让输入内容不贴边 */
+  background-color: #fff; /* 白色背景，与页面背景区分开，突出输入区域 */
+  border-radius: 8rpx; /* 适度的圆角，使外观更柔和 */
+  box-shadow: 0 2rpx 5rpx rgba(0, 0, 0, 0.1); /* 添加淡淡的阴影，增加立体感 */
+  transition: box-shadow 0.3s ease; /* 为阴影变化添加过渡效果（若有相关交互需求） */
+}
+.inputArea:focus {
+  box-shadow: 0 4rpx 8rpx rgba(0, 0, 0, 0.2); /* 输入框获取焦点时，阴影加深，增强交互反馈 */
+}
+
+/* 发送按钮所在区域样式，与输入区域相呼应，形成操作区域的整体感 */
+.mysend {
+  width: 80%;
+  font-size: 30rpx;
+  text-align: center;
+  height: 80rpx;
+  margin: 40rpx auto; /* 适当增加上下间距，使布局更有层次感 */
+  background-color: #ffe4cc; /* 淡橙色背景，与顶部栏颜色呼应，区分不同功能区域 */
+  border-radius: 8rpx; /* 圆角效果，使外观更柔和 */
+  box-shadow: 0 2rpx 5rpx rgba(0, 0, 0, 0.1); /* 淡淡的阴影，增加立体感 */
+  transition: all 0.3s ease; /* 为按钮的各种状态变化添加过渡效果，提升交互体验 */
+}
+.mysend:hover {
+  background-color: #ffd5b3; /* 鼠标悬停时背景色稍加深，提供交互反馈 */
+  box-shadow: 0 4rpx 8rpx rgba(0, 0, 0, 0.2); /* 悬停时阴影进一步加深，增强按下的视觉暗示 */
+}
+.mysend:active {
+  transform: translateY(2rpx); /* 按钮按下时，有微微向下移动的效果，模拟真实按钮按下的感觉 */
+}
+
+/* 显示表格整体样式，用于展示相关信息，布局上与其他元素协调统一 */
+.dispalyTable {
+  display: flex;
+  flex-direction: row;
+  width: 80%;
+  height: 80rpx; /* 适当增加高度，使表格更显饱满 */
+  margin: 40rpx auto;
+  align-items: center; /* 垂直居中对齐内容，确保文本在表格内的位置美观 */
+  border-radius: 8rpx; /* 整体添加圆角效果，与其他元素风格一致 */
+  box-shadow: 0 2rpx 5rpx rgba(0, 0, 0, 0.1); /* 淡淡的阴影，增强立体感 */
+  background-color: #fff; /* 白色背景，与页面整体风格协调 */
+  overflow: hidden; /* 隐藏超出部分内容，确保布局整齐 */
+}
+
+/* 显示表格标题部分样式，突出显示标题信息 */
+.dispalyTable.displaytitle {
+  width: 30%;
+  height: 100%;
+  display: flex;
+  align-items: center; /* 垂直居中对齐文本 */
+  justify-content: center; /* 水平居中对齐文本 */
+  font-weight: bold; /* 加粗字体，强调标题属性 */
+  color: #666; /* 稍暗一点的灰色标题，与内容区分开 */
+  border-right: 2rpx solid #eee; /* 添加右侧分割线，清晰划分标题与内容区域 */
+  padding: 0 10rpx; /* 左右添加少量内边距，避免文字贴边 */
+}
+
+/* 单选按钮组样式，用于提供可选项 */
+.head_select {
+  width: 80%;
+  margin: 40rpx auto;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 10rpx 20rpx; /* 内外添加适量内边距，让 radio 按钮布局更合理 */
+  border-radius: 8rpx; /* 圆角效果，与其他元素风格统一 */
+  background-color: #f5f5f5; /* 浅灰色背景，与整体页面形成层次区分 */
+  box-shadow: 0 2rpx 5rpx rgba(0, 0, 0, 0.1); /* 淡淡的阴影，增加立体感 */
+}
+
+/* 显示表格内容部分样式，展示具体的数据内容 */
+.dispalyTable.displayvalue {
+  display: flex;
+  flex-direction: row;
+  width: 70%;
+  height: 100%;
+  align-items: center; /* 垂直居中对齐文本 */
+  padding: 0 20rpx; /* 左右添加适量内边距，让文本显示更美观 */
+  color: #333; /* 主体文本颜色，与整体页面文字颜色一致 */
+  overflow: hidden; /* 隐藏超出部分内容，确保布局整齐 */
+  text-overflow: ellipsis; /* 文本超出显示省略号，保持布局美观 */
+  white-space: nowrap; /* 禁止文本换行，确保一行显示 */
+}
+.dispalyTable.displayvalue::after {
+  content: "";
+  display: block;
+  width: 2rpx;
+  height: 60%;
+  background-color: #eee; /* 在内侧添加一条浅灰色竖线作为分割线，更细腻的区分显示区域 */
+  margin-left: 20rpx; /* 控制竖线与文本的间距 */
+}
+
+/* 解读按钮样式，作为重要的交互按钮，需突出显示且具有良好的视觉效果 */
+.interpretBtn {
+  width: 80%;
+  margin: 30rpx auto;
+  background-color: #ff7f50; /* 与顶部栏背景色一致，形成呼应，强化品牌感 */
+  color: #fff;
+  font-size: 30rpx;
+  height: 80rpx;
+  border-radius: 10rpx; /* 适当的圆角，使按钮外观更柔和美观 */
+  box-shadow: 0 4rpx 8rpx rgba(0, 0, 0, 0.2); /* 较深的阴影，让按钮更具立体感，突出可点击性 */
+  transition: all 0.3s ease; /* 为按钮的各种状态变化添加过渡效果，提升交互体验 */
+}
+.interpretBtn:hover {
+  background-color: #ff6347; /* 鼠标悬停时按钮背景色稍加深，提供交互反馈 */
+  box-shadow: 0 6rpx 10rpx rgba(0, 0, 0, 0.3); /* 悬停时阴影进一步加深，增强按下的视觉暗示 */
+}
+.interpretBtn:active {
+  transform: translateY(2rpx); /* 按钮按下时，有微微向下移动的效果，模拟真实按钮按下的感觉 */
+}
+
+/* 含义展示区域整体样式，用于展示操作码含义等相关信息 */
+.meaningDisplay {
+  width: 80%;
+  margin: 30rpx auto;
+  padding: 30rpx; /* 适当增加内边距，让内容更宽松舒适地展示 */
+  background-color: #f8f0e6; /* 淡米色背景，与页面主体区分开 */
+  border-radius: 10rpx; /* 圆角效果，保持整体风格一致 */
+  box-shadow: 0 4rpx 8rpx rgba(0, 0, 0, 0.2); /* 增加阴影，使其更立体，突出显示区域 */
+}
+
+/* 含义展示区域标题样式，清晰突出标题部分 */
+.meaningTitle {
+  font-size: 32rpx;
+  font-weight: bold;
+  margin-bottom: 20rpx;
+  color: #333; /* 标题颜色与主体文本一致，保持整体协调性 */
+}
+
+/* 含义展示区域内容样式，展示具体的含义文本内容 */
+.meaningContent {
+  font-size: 30rpx;
+  color: #666; /* 稍暗一点的灰色，用于区分标题与内容文本 */
+  line-height: 1.6; /* 适当增加行间距，提升文本可读性 */
 }

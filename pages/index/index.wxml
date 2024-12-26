@@ -1,23 +1,37 @@
 <!--index.wxml-->
+<view class="header">
+  <text class="projectbox">监控传输小程序</text>
+</view>
 <view class="container">
-  <view class="userinfo">
-    <block wx:if="{{canIUseOpenData}}" calss="userinfo-opendata">
-      <view class="userinfo-avatar" bindtap="bindViewTap">
-        <open-data type="userAvatarUrl"></open-data>
-      </view>
-      <open-data type="userNickName"></open-data>
-    </block>
-    <block wx:elif="{{!hasUserInfo}}">
-      <button wx:if="{{canIUseGetUserProfile}}" bindtap="getUserProfile"> 获取头像昵称 </button>
-      <button wx:elif="{{canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
-      <view wx:else> 请使用1.4.4及以上版本基础库 </view>
-    </block>
-    <block wx:else>
-      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-    </block>
-  </view>
-  <view class="usermotto">
-    <text class="user-motto">{{motto}}</text>
+  <radio-group class='head_select' bindchange="head_selection">
+    <radio value="E9" checked="true"/> E9
+    <radio value="A9"/> A9  
+  </radio-group>
+  <view class="inputArea"  >
+     <input placeholder="输入地址码（不需要操作码）" maxlength="10" auto-focus bindinput="inputData"  bindconfirm="inputOver" value='{{inputValueTemp}}' ></input>  
+  </view>  
+  <!-- E9 A9 -->
+  <!-- 02 写入 地址高低位 数据-->
+  <!-- B0 查询 -->
+  <view class="mysend"  >
+    <button  class="sendBtn" bindtap="send_udp">发送</button>
+  </view> 
+  <view class="dispalyTable" >
+         <view class="displaytitle" ><text>返回消息:  </text></view>
+         <view class="displayvalue" > <text >{{receiveValue}}  </text>    </view>       
+  </view>  
+  <radio-group class='head_select' bindchange="func_selection">
+    <radio value="02" checked="true"/> 02  <!-- 添加 02 单选框 -->
+    <radio value="B0"/> B0  <!-- 添加 B0 单选框 -->
+  </radio-group>
+
+  <!-- 添加解读按钮 -->
+  <button bindtap="showMeaning" class="interpretBtn">解读</button>
+  <!-- 用于展示含义的区域 -->
+  <view class="meaningDisplay" wx:if="{{showMeaningPanel}}">
+    <view class="meaningTitle"><text>操作码含义如下：</text></view>
+    <view class="meaningContent">
+      <text>{{meaningText}}</text>
+    </view>
   </view>
 </view>
